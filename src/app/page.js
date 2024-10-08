@@ -97,8 +97,9 @@ export default function Home() {
         <h1>Guilherme Niclewicz</h1>
         <h3>Senior FullStack Developer</h3>
         <p>
-          I build web applications, being my specialization in backend
-          development and cloud computing.
+          I build FullStack web applications, specializing in backend
+          development and cloud computing. Graduated in Engineering with a
+          Master's degree in Computational Mathematics.
         </p>
         <Nav>
           <ul>
