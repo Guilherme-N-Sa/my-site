@@ -1,55 +1,120 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import styled from "styled-components";
+
+const Main = styled.main`
+  display: flex;
+  justify-content: center;
+  margin: 0;
+  padding: 30px 40px;
+  height: 100vh;
+  text-align: start;
+  word-wrap: break-word;
+
+  div {
+    width: 100%;
+  }
+`;
+
+const GeneralInfo = styled.div`
+  height: 100%;
+  padding: 45px;
+
+  * {
+    margin: 0;
+    padding: 0;
+    font-weight: 500;
+    margin-top: 10px;
+  }
+
+  h1 {
+    font-size: 2.7rem;
+  }
+
+  h3 {
+    font-size: 1.4rem;
+  }
+
+  p {
+    font-size: 0.9rem;
+    color: rgb(148 163 184);
+  }
+`;
+
+const Nav = styled.nav`
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-top: 20px;
+
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  li {
+    display: flex;
+    align-items: center;
+    margin: 10px 0;
+  }
+
+  a {
+    text-decoration: none;
+    color: #8892b0;
+    font-size: 16px;
+    font-weight: bold;
+    position: relative;
+    padding-left: 20px;
+    transition: padding-left 0.3s;
+  }
+
+  a::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 15px;
+    height: 1px;
+    background-color: #8892b0;
+    transition: width 0.3s;
+  }
+
+  a:hover::before {
+    width: 40px;
+  }
+
+  a:hover {
+    color: #ffffff;
+    padding-left: 45px;
+  }
+`;
 
 export default function Home() {
-  const [count, setCount] = useState(0);
-  const [on, setProgress] = useState(false);
-
-  useEffect(() => {
-    let interval;
-    if (on) {
-      interval = setInterval(() => {
-        setCount((c) => {
-          if (c >= 100) {
-            setProgress(false);
-            return c;
-          }
-          return c + 1;
-        });
-      }, 30);
-    }
-
-    return () => {
-      if (interval) {
-        clearInterval(interval);
-      }
-    };
-  }, [on]);
-
   return (
-    <main>
-      <img src="/logo.png" alt="A server surrounded by magic sparkles." />
-      <h1>Welcome to this NextJS Course!</h1>
-      <p>🔥 Let&apos;s get started! 🔥</p>
-
-      <div className="progress-bar">
-        <div
-          style={{
-            width: `${count}%`,
-            backgroundColor: "black",
-            height: "30px",
-            border: "0px solid black",
-            margin: "0px",
-            padding: "0px",
-          }}
-        ></div>
-      </div>
-      <div>{count}%</div>
-      <div className="buttons-container">
-        <button onClick={() => setProgress(true)}>START</button>
-        <button onClick={() => setProgress(false)}>STOP</button>
-      </div>
-    </main>
+    <Main>
+      <GeneralInfo>
+        <h1>Guilherme Niclewicz</h1>
+        <h3>Senior FullStack Developer</h3>
+        <p>
+          I build web applications, being my specialization in backend
+          development and cloud computing.
+        </p>
+        <Nav>
+          <ul>
+            <li>
+              <a href="javascript:void(0)">About</a>
+            </li>
+            <li>
+              <a href="javascript:void(0)">Experience</a>
+            </li>
+            <li>
+              <a href="javascript:void(0)">Projects</a>
+            </li>
+          </ul>
+        </Nav>
+      </GeneralInfo>
+      <div className="detailed-info">ds</div>
+    </Main>
   );
 }
