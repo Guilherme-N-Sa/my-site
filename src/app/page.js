@@ -1,5 +1,6 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import styled from "styled-components";
 
 const Main = styled.main`
@@ -10,6 +11,7 @@ const Main = styled.main`
   height: 100vh;
   text-align: start;
   word-wrap: break-word;
+  overflow: hidden;
 
   div {
     width: 100%;
@@ -37,7 +39,7 @@ const GeneralInfo = styled.div`
 
   p {
     font-size: 0.9rem;
-    color: rgb(148 163 184);
+    color: rgb(148, 163, 184);
   }
 `;
 
@@ -90,9 +92,41 @@ const Nav = styled.nav`
   }
 `;
 
+// Radial Gradient Component
+const RadialGradient = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  width: 100%;
+  height: 100%;
+  background: ${(props) =>
+    `radial-gradient(500px at ${props.x}px ${props.y}px, #23046147, transparent 70%)`};
+  z-index: 0;
+`;
+
 export default function Home() {
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+
+  useEffect(() => {
+    const handleMouseMove = (event) => {
+      setMousePosition({
+        x: event.clientX,
+        y: event.clientY,
+      });
+    };
+
+    window.addEventListener("mousemove", handleMouseMove);
+
+    // Cleanup function
+    return () => {
+      window.removeEventListener("mousemove", handleMouseMove);
+    };
+  }, []);
+
   return (
     <Main>
+      <RadialGradient x={mousePosition.x} y={mousePosition.y} />
       <GeneralInfo>
         <h1>Guilherme Niclewicz</h1>
         <h3>Senior FullStack Developer</h3>
@@ -104,18 +138,35 @@ export default function Home() {
         <Nav>
           <ul>
             <li>
-              <a href="javascript:void(0)">About</a>
+              <a href="#">About</a>
             </li>
             <li>
-              <a href="javascript:void(0)">Experience</a>
+              <a href="#">Experience</a>
             </li>
             <li>
-              <a href="javascript:void(0)">Projects</a>
+              <a href="#">Projects</a>
             </li>
           </ul>
         </Nav>
       </GeneralInfo>
-      <div className="detailed-info">ds</div>
+      <DetailedInfo />
     </Main>
+  );
+}
+
+// Extra Component for Detailed Information Section
+const DetailedInfoWrapper = styled.div`
+  width: 100%;
+  padding: 20px;
+  background-color: #f0f0f0;
+  border-radius: 8px;
+  margin-top: 20px;
+  color: #231e2d;
+`;
+
+// DetailedInfo Component Usage
+function DetailedInfo() {
+  return (
+    <DetailedInfoWrapper>Detailed information goes here...</DetailedInfoWrapper>
   );
 }
