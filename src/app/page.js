@@ -1,12 +1,14 @@
 "use client";
 
+import SocialBar from "./components/SocialBar/SocialBar";
 import { useState, useEffect } from "react";
 import styled from "styled-components";
 
 const Main = styled.main`
   display: flex;
   justify-content: center;
-  margin: 0;
+  margin: 0 auto;
+  max-width: 1200px;
   padding: 30px 40px;
   height: 100vh;
   text-align: start;
@@ -21,7 +23,12 @@ const Main = styled.main`
 const GeneralInfo = styled.div`
   height: 100%;
   padding: 45px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+`;
 
+const Hero = styled.div`
   * {
     margin: 0;
     padding: 0;
@@ -128,26 +135,29 @@ export default function Home() {
     <Main>
       <RadialGradient x={mousePosition.x} y={mousePosition.y} />
       <GeneralInfo>
-        <h1>Guilherme Niclewicz</h1>
-        <h3>Senior FullStack Developer</h3>
-        <p>
-          I build FullStack web applications, specializing in backend
-          development and cloud computing. Graduated in Engineering with a
-          Master's degree in Computational Mathematics.
-        </p>
-        <Nav>
-          <ul>
-            <li>
-              <a href="#">About</a>
-            </li>
-            <li>
-              <a href="#">Experience</a>
-            </li>
-            <li>
-              <a href="#">Projects</a>
-            </li>
-          </ul>
-        </Nav>
+        <Hero>
+          <h1>Guilherme Niclewicz</h1>
+          <h3>Senior FullStack Developer</h3>
+          <p>
+            I build FullStack web applications, specializing in backend
+            development and cloud computing. Graduated in Engineering with a
+            Master's degree in Computational Mathematics.
+          </p>
+          <Nav>
+            <ul>
+              <li>
+                <a href="#">About</a>
+              </li>
+              <li>
+                <a href="#">Experience</a>
+              </li>
+              <li>
+                <a href="#">Projects</a>
+              </li>
+            </ul>
+          </Nav>
+        </Hero>
+        <SocialBar />
       </GeneralInfo>
       <DetailedInfo />
     </Main>
