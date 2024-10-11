@@ -54,7 +54,7 @@ const Nav = styled.nav`
   display: flex;
   flex-direction: column;
   gap: 20px;
-  margin-top: 20px;
+  margin-top: 10px;
 
   ul {
     list-style: none;
