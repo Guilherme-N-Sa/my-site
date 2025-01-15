@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Main, GeneralInfo, RadialGradient } from './styles';
+import { Wrapper, GeneralInfo, RadialGradient } from './styles';
 import { LayoutProps } from './types';
 
 const Layout: React.FC<LayoutProps> = ({ children }) => {
@@ -21,12 +21,12 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
   }, []);
 
   return (
-    <Main>
+    <Wrapper>
       <RadialGradient x={mousePosition.x} y={mousePosition.y} />
       <GeneralInfo>
         {children}
       </GeneralInfo>
-    </Main>
+    </Wrapper>
   );
 };
 

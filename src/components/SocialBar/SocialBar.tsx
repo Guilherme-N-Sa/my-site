@@ -1,29 +1,29 @@
-import React from 'react';
-import { FaGithub, FaLinkedin, FaMedium, FaInstagram } from 'react-icons/fa';
-import { SocialContainer, IconLink } from './styles';
-import { SocialBarProps, SocialLink } from './types';
+import React from "react";
+import { FaGithub, FaLinkedin, FaMedium, FaInstagram } from "react-icons/fa";
+import { SocialContainer, IconLink } from "./styles";
+import { SocialBarProps, SocialLink } from "./types";
 
 const defaultLinks: SocialLink[] = [
   {
     icon: FaGithub,
-    url: 'https://github.com/guilhermeniclewicz',
-    label: 'GitHub Profile'
+    url: "https://github.com/Guilherme-N-Sa",
+    label: "GitHub Profile",
   },
   {
     icon: FaLinkedin,
-    url: 'https://linkedin.com/in/guilhermeniclewicz',
-    label: 'LinkedIn Profile'
+    url: "https://www.linkedin.com/in/guinssa/",
+    label: "LinkedIn Profile",
   },
   {
     icon: FaMedium,
-    url: 'https://medium.com/@guilhermeniclewicz',
-    label: 'Medium Blog'
+    url: "https://medium.com/@guilhermeniclewicz",
+    label: "Medium Blog",
   },
   {
     icon: FaInstagram,
-    url: 'https://instagram.com/guilhermeniclewicz',
-    label: 'Instagram Profile'
-  }
+    url: "https://www.instagram.com/guilhermeniclewicz",
+    label: "Instagram Profile",
+  },
 ];
 
 const SocialBar: React.FC<SocialBarProps> = ({ links = defaultLinks }) => {
@@ -44,4 +44,4 @@ const SocialBar: React.FC<SocialBarProps> = ({ links = defaultLinks }) => {
   );
 };
 
-export default SocialBar; 
+export default SocialBar;

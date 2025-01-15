@@ -1,7 +1,7 @@
-import styled from 'styled-components';
-import { RadialGradientProps } from './types';
+import styled from "styled-components";
+import { RadialGradientProps } from "./types";
 
-export const Main = styled.main`
+export const Wrapper = styled.main`
   display: flex;
   justify-content: center;
   margin: 0 auto;
@@ -15,18 +15,31 @@ export const Main = styled.main`
   div {
     width: 100%;
   }
+
+  @media (max-width: 768px) {
+    padding: ${({ theme }) => theme.spacing.medium};
+  }
 `;
 
 export const GeneralInfo = styled.div`
+  width: 100%;
   height: 100%;
   padding: ${({ theme }) => theme.spacing.xlarge};
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    padding: ${({ theme }) => theme.spacing.medium};
+    gap: ${({ theme }) => theme.spacing.medium};
+    overflow: auto;
+    justify-content: start;
+  }
 `;
 
 export const RadialGradient = styled.div<RadialGradientProps>`
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   pointer-events: none;
@@ -35,4 +48,4 @@ export const RadialGradient = styled.div<RadialGradientProps>`
   background: ${(props) =>
     `radial-gradient(600px at ${props.x}px ${props.y}px, ${props.theme.colors.primaryLight}, transparent 70%)`};
   z-index: 0;
-`; 
+`;
