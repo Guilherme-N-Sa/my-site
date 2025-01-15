@@ -58,7 +58,8 @@ export const DetailedInfoWrapper = styled.div`
       letter-spacing: -0.02em;
 
       &:first-child {
-        margin-top: 0;
+        margin: ${({ theme }) => theme.spacing.small} 0;
+
       }
     }
 
@@ -140,6 +141,8 @@ export const DetailedInfoWrapper = styled.div`
       margin-bottom: ${({ theme }) => theme.spacing.small};
       position: relative;
       padding-left: ${({ theme }) => theme.spacing.small};
+      letter-spacing: -0.01em;
+      text-align: justify;
       
       &::marker {
         color: ${({ theme }) => theme.colors.primary}90;
