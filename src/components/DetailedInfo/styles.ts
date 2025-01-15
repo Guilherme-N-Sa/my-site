@@ -4,73 +4,102 @@ export const DetailedInfoWrapper = styled.div`
   width: 100%;
   padding: ${({ theme }) => theme.spacing.medium};
   background-color: ${({ theme }) => theme.colors.background.secondary};
-  border-radius: 8px;
+  border-radius: 12px;
   margin-top: ${({ theme }) => theme.spacing.medium};
   color: ${({ theme }) => theme.colors.text.dark};
-  max-height: 70vh;
+  max-height: 75vh;
   overflow-y: auto;
+  z-index: 1; 
 
   &::-webkit-scrollbar {
     width: 6px;
   }
 
   &::-webkit-scrollbar-track {
-    background: ${({ theme }) => theme.colors.background.secondary}40;
+    background: ${({ theme }) => theme.colors.background.primary}20;
     border-radius: 3px;
   }
 
   &::-webkit-scrollbar-thumb {
-    background: ${({ theme }) => theme.colors.primary}40;
+    background: ${({ theme }) => theme.colors.primary}90;
     border-radius: 3px;
     
     &:hover {
-      background: ${({ theme }) => theme.colors.primary}80;
+      background: ${({ theme }) => theme.colors.primary};
     }
   }
 
-  /* |||||||||||||||| */
   /* Markdown Styling */
-  /* |||||||||||||||| */
   .markdown-content {
+    max-width: 900px;
+    margin: 0 auto;
+    font-size: 1.05rem;
+    line-height: 1.7;
+
     h1, h2, h3, h4, h5, h6 {
       margin-top: ${({ theme }) => theme.spacing.medium};
-      margin-bottom: ${({ theme }) => theme.spacing.small};
+      margin-bottom: ${({ theme }) => theme.spacing.medium};
       color: ${({ theme }) => theme.colors.primary};
       font-weight: ${({ theme }) => theme.typography.weights.bold};
+      letter-spacing: -0.02em;
+
+      &:first-child {
+        margin-top: 0;
+      }
     }
 
-    h1 { font-size: 2em; }
-    h2 { font-size: 1.5em; }
-    h3 { font-size: 1.17em; }
+    h1 { 
+      font-size: 2.5em;
+      margin-bottom: ${({ theme }) => theme.spacing.large};
+    }
+    h2 { font-size: 2em; }
+    h3 { 
+      font-size: 1.75em;
+      margin-bottom: ${({ theme }) => theme.spacing.large};
+    }
+    h4 { 
+      font-size: 1.4em;
+      color: ${({ theme }) => theme.colors.primary}dd;
+    }
 
     p {
-      margin-bottom: ${({ theme }) => theme.spacing.small};
-      line-height: 1.6;
+      margin-bottom: ${({ theme }) => theme.spacing.medium};
+      line-height: 1.8;
+      color: ${({ theme }) => theme.colors.text.dark}ee;
+      text-align: justify;
+    }
+
+    strong, b {
+      color: ${({ theme }) => theme.colors.primary};
+      font-weight: ${({ theme }) => theme.typography.weights.bold};
     }
 
     a {
       color: ${({ theme }) => theme.colors.primary};
       text-decoration: none;
-      transition: opacity ${({ theme }) => theme.transitions.default};
+      transition: all ${({ theme }) => theme.transitions.default};
+      border-bottom: 1px solid transparent;
 
       &:hover {
-        opacity: 0.8;
+        opacity: 0.9;
+        border-bottom-color: ${({ theme }) => theme.colors.primary};
       }
     }
 
     code {
-      background-color: ${({ theme }) => theme.colors.background.primary}20;
-      padding: 2px 4px;
+      background-color: ${({ theme }) => theme.colors.background.primary}15;
+      padding: 2px 6px;
       border-radius: 4px;
       font-family: monospace;
+      font-size: 0.95em;
     }
 
     pre {
       background-color: ${({ theme }) => theme.colors.background.primary}10;
-      padding: ${({ theme }) => theme.spacing.small};
-      border-radius: 4px;
+      padding: ${({ theme }) => theme.spacing.medium};
+      border-radius: 8px;
       overflow-x: auto;
-      margin: ${({ theme }) => theme.spacing.small} 0;
+      margin: ${({ theme }) => theme.spacing.medium} 0;
 
       code {
         background: none;
@@ -80,46 +109,72 @@ export const DetailedInfoWrapper = styled.div`
 
     blockquote {
       border-left: 4px solid ${({ theme }) => theme.colors.primary}40;
-      padding-left: ${({ theme }) => theme.spacing.small};
-      margin: ${({ theme }) => theme.spacing.small} 0;
+      padding: ${({ theme }) => theme.spacing.medium};
+      margin: ${({ theme }) => theme.spacing.medium} 0;
+      background-color: ${({ theme }) => theme.colors.background.primary}05;
+      border-radius: 0 8px 8px 0;
       font-style: italic;
+      color: ${({ theme }) => theme.colors.text.dark}dd;
     }
 
     ul, ol {
-      margin: ${({ theme }) => theme.spacing.small} 0;
-      padding-left: ${({ theme }) => theme.spacing.medium};
+      margin: ${({ theme }) => theme.spacing.small} 0 ${({ theme }) => theme.spacing.medium};
+      padding-left: ${({ theme }) => theme.spacing.large};
     }
 
     li {
-      margin-bottom: 4px;
+      margin-bottom: ${({ theme }) => theme.spacing.small};
+      position: relative;
+      padding-left: ${({ theme }) => theme.spacing.small};
+      
+      &::marker {
+        color: ${({ theme }) => theme.colors.primary}90;
+      }
     }
 
     img {
       max-width: 100%;
       height: auto;
-      border-radius: 4px;
-      margin: ${({ theme }) => theme.spacing.small} 0;
+      border-radius: 8px;
+      margin: ${({ theme }) => theme.spacing.medium} 0;
+      box-shadow: 0 2px 8px ${({ theme }) => theme.colors.background.primary}15;
     }
 
     hr {
       border: none;
-      border-top: 1px solid ${({ theme }) => theme.colors.primary}20;
-      margin: ${({ theme }) => theme.spacing.medium} 0;
+      height: 1px;
+      background: linear-gradient(
+        to right,
+        ${({ theme }) => theme.colors.primary}00,
+        ${({ theme }) => theme.colors.primary}40,
+        ${({ theme }) => theme.colors.primary}00
+      );
+      margin: ${({ theme }) => theme.spacing.large} 0;
     }
 
     table {
       width: 100%;
-      border-collapse: collapse;
-      margin: ${({ theme }) => theme.spacing.small} 0;
+      border-collapse: separate;
+      border-spacing: 0;
+      margin: ${({ theme }) => theme.spacing.medium} 0;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 0 0 1px ${({ theme }) => theme.colors.primary}20;
 
       th, td {
-        border: 1px solid ${({ theme }) => theme.colors.primary}20;
-        padding: 8px;
+        padding: ${({ theme }) => theme.spacing.small} ${({ theme }) => theme.spacing.medium};
         text-align: left;
+        border-bottom: 1px solid ${({ theme }) => theme.colors.primary}20;
       }
 
       th {
         background-color: ${({ theme }) => theme.colors.primary}10;
+        font-weight: ${({ theme }) => theme.typography.weights.bold};
+        color: ${({ theme }) => theme.colors.primary};
+      }
+
+      tr:last-child td {
+        border-bottom: none;
       }
 
       tr:nth-child(even) {
