@@ -1,23 +1,29 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const HeroContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: space-between;
+  padding: ${({ theme }) => "0 " + theme.spacing.medium};
+
   * {
     margin: 0;
     padding: 0;
-    font-weight: 500;
-    margin-top: 10px;
+    font-weight: ${({ theme }) => theme.typography.weights.medium};
+    margin-top: ${({ theme }) => theme.spacing.small};
   }
 
   h1 {
-    font-size: 2.7rem;
+    font-size: ${({ theme }) => theme.typography.sizes.xlarge};
   }
 
   h3 {
-    font-size: 1.4rem;
+    font-size: ${({ theme }) => theme.typography.sizes.large};
   }
 
   p {
-    font-size: 0.9rem;
-    color: rgb(148, 163, 184);
+    font-size: ${({ theme }) => theme.typography.sizes.small};
+    color: ${({ theme }) => theme.colors.text.tertiary};
   }
-`; 
+`;

@@ -3,8 +3,8 @@ import styled from 'styled-components';
 export const Nav = styled.nav`
   display: flex;
   flex-direction: column;
-  gap: 20px;
-  margin-top: 10px;
+  gap: ${({ theme }) => theme.spacing.medium};
+  margin-top: ${({ theme }) => theme.spacing.small};
 
   ul {
     list-style: none;
@@ -15,17 +15,17 @@ export const Nav = styled.nav`
   li {
     display: flex;
     align-items: center;
-    margin: 10px 0;
+    margin: ${({ theme }) => `${theme.spacing.small} 0`};
   }
 
   a {
     text-decoration: none;
-    color: #8892b0;
-    font-size: 16px;
-    font-weight: bold;
+    color: ${({ theme }) => theme.colors.text.secondary};
+    font-size: ${({ theme }) => theme.typography.sizes.medium};
+    font-weight: ${({ theme }) => theme.typography.weights.bold};
     position: relative;
-    padding-left: 20px;
-    transition: padding-left 0.3s;
+    padding-left: ${({ theme }) => theme.spacing.medium};
+    transition: padding-left ${({ theme }) => theme.transitions.default};
   }
 
   a::before {
@@ -35,8 +35,8 @@ export const Nav = styled.nav`
     top: 50%;
     width: 15px;
     height: 1px;
-    background-color: #8892b0;
-    transition: width 0.3s;
+    background-color: ${({ theme }) => theme.colors.text.secondary};
+    transition: width ${({ theme }) => theme.transitions.default};
   }
 
   a:hover::before {
@@ -44,7 +44,7 @@ export const Nav = styled.nav`
   }
 
   a:hover {
-    color: #ffffff;
+    color: ${({ theme }) => theme.colors.text.primary};
     padding-left: 45px;
   }
 `; 

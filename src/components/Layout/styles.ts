@@ -6,7 +6,7 @@ export const Main = styled.main`
   justify-content: center;
   margin: 0 auto;
   max-width: 1200px;
-  padding: 30px 40px;
+  padding: ${({ theme }) => `${theme.spacing.large} ${theme.spacing.xlarge}`};
   height: 100vh;
   text-align: start;
   word-wrap: break-word;
@@ -19,9 +19,9 @@ export const Main = styled.main`
 
 export const GeneralInfo = styled.div`
   height: 100%;
-  padding: 45px;
+  padding: ${({ theme }) => theme.spacing.xlarge};
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: space-between;
 `;
 
@@ -33,6 +33,6 @@ export const RadialGradient = styled.div<RadialGradientProps>`
   width: 100%;
   height: 100%;
   background: ${(props) =>
-    `radial-gradient(500px at ${props.x}px ${props.y}px, #23046147, transparent 70%)`};
+    `radial-gradient(600px at ${props.x}px ${props.y}px, ${props.theme.colors.primaryLight}, transparent 70%)`};
   z-index: 0;
 `; 

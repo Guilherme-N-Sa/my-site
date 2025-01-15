@@ -2,9 +2,9 @@ import styled from 'styled-components';
 
 export const DetailedInfoWrapper = styled.div`
   width: 100%;
-  padding: 20px;
-  background-color: #f0f0f0;
+  padding: ${({ theme }) => theme.spacing.medium};
+  background-color: ${({ theme }) => theme.colors.background.secondary};
   border-radius: 8px;
-  margin-top: 20px;
-  color: #231e2d;
+  margin-top: ${({ theme }) => theme.spacing.medium};
+  color: ${({ theme }) => theme.colors.text.dark};
 `; 
