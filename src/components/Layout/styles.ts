@@ -29,6 +29,10 @@ export const RadialGradient = styled.div<RadialGradientProps>`
   width: 100%;
   height: 100%;
   background: ${(props) =>
-    `radial-gradient(400px at ${props.x}px ${props.y}px, ${props.theme.colors.primaryLight}, transparent 90%)`};
+    `radial-gradient(400px at ${props.x}px ${props.y}px, ${props.theme.colors.primary}, transparent 20%)`};
   z-index: 0;
+
+  @media (max-width: 768px) {
+    display: none;
+  }
 `;

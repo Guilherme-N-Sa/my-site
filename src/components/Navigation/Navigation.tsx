@@ -15,7 +15,7 @@ export default function Navigation({ items }: NavigationProps) {
     if (detailedInfo) {
       detailedInfo.scrollIntoView({
         behavior: "smooth",
-        block: "start",
+        block: "center",
       });
     }
   };
