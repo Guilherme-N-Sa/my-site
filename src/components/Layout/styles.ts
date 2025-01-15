@@ -17,7 +17,7 @@ export const Wrapper = styled.main`
   }
 
   @media (max-width: 768px) {
-    padding: ${({ theme }) => theme.spacing.medium};
+    padding: 0;
   }
 `;
 

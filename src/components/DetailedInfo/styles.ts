@@ -7,9 +7,17 @@ export const DetailedInfoWrapper = styled.div`
   border-radius: 12px;
   margin-top: ${({ theme }) => theme.spacing.medium};
   color: ${({ theme }) => theme.colors.text.dark};
+  min-height: 500px;
   max-height: 75vh;
   overflow-y: auto;
-  z-index: 1; 
+  z-index: 1;
+
+  @media (max-width: 768px) {
+    min-height: 600px;
+    margin-top: ${({ theme }) => theme.spacing.large};
+    padding: ${({ theme }) => theme.spacing.medium} ${({ theme }) => theme.spacing.small};
+    margin-bottom: ${({ theme }) => theme.spacing.xlarge};
+  }
 
   &::-webkit-scrollbar {
     width: 6px;
@@ -35,6 +43,12 @@ export const DetailedInfoWrapper = styled.div`
     margin: 0 auto;
     font-size: 1.05rem;
     line-height: 1.7;
+    padding-bottom: ${({ theme }) => theme.spacing.medium};
+
+    @media (max-width: 768px) {
+      font-size: 1rem;
+      padding: 0 ${({ theme }) => theme.spacing.small} ${({ theme }) => theme.spacing.large};
+    }
 
     h1, h2, h3, h4, h5, h6 {
       margin-top: ${({ theme }) => theme.spacing.medium};

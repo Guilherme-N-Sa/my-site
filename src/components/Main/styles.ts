@@ -10,7 +10,7 @@ export const MainContainer = styled.main`
 
   @media (max-width: 768px) {
     flex-direction: column;
-    padding: ${({ theme }) => theme.spacing.medium};
+    padding: ${({ theme }) => theme.spacing.xlarge};
     gap: ${({ theme }) => theme.spacing.medium};
     overflow: auto;
     justify-content: start;

@@ -8,7 +8,16 @@ export default function Navigation({ items }: NavigationProps) {
     item: NavItem
   ) => {
     e.preventDefault();
+
     item.onClick?.();
+
+    const detailedInfo = document.querySelector(".detailed-info");
+    if (detailedInfo) {
+      detailedInfo.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    }
   };
 
   return (
