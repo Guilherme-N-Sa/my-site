@@ -1,36 +1,46 @@
 import React from 'react';
-import styled from 'styled-components';
+import { FaGithub, FaLinkedin, FaMedium, FaInstagram } from 'react-icons/fa';
+import { SocialContainer, IconLink } from './styles';
+import { SocialBarProps, SocialLink } from './types';
 
-const SocialBarContainer = styled.div`
-  display: flex;
-  gap: 20px;
-  margin-top: 20px;
-`;
-
-const SocialLink = styled.a`
-  color: #8892b0;
-  text-decoration: none;
-  font-size: 16px;
-  transition: color 0.3s;
-
-  &:hover {
-    color: #ffffff;
+const defaultLinks: SocialLink[] = [
+  {
+    icon: FaGithub,
+    url: 'https://github.com/guilhermeniclewicz',
+    label: 'GitHub Profile'
+  },
+  {
+    icon: FaLinkedin,
+    url: 'https://linkedin.com/in/guilhermeniclewicz',
+    label: 'LinkedIn Profile'
+  },
+  {
+    icon: FaMedium,
+    url: 'https://medium.com/@guilhermeniclewicz',
+    label: 'Medium Blog'
+  },
+  {
+    icon: FaInstagram,
+    url: 'https://instagram.com/guilhermeniclewicz',
+    label: 'Instagram Profile'
   }
-`;
+];
 
-const SocialBar: React.FC = () => {
+const SocialBar: React.FC<SocialBarProps> = ({ links = defaultLinks }) => {
   return (
-    <SocialBarContainer>
-      <SocialLink href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer">
-        GitHub
-      </SocialLink>
-      <SocialLink href="https://linkedin.com/in/yourusername" target="_blank" rel="noopener noreferrer">
-        LinkedIn
-      </SocialLink>
-      <SocialLink href="mailto:your.email@example.com">
-        Email
-      </SocialLink>
-    </SocialBarContainer>
+    <SocialContainer>
+      {links.map((link) => (
+        <IconLink
+          key={link.url}
+          href={link.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label={link.label}
+        >
+          <link.icon />
+        </IconLink>
+      ))}
+    </SocialContainer>
   );
 };
 
