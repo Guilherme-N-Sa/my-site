@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { RadialGradientProps } from "./types";
 
-export const Wrapper = styled.main`
+export const Wrapper = styled.div`
   display: flex;
   justify-content: center;
   margin: 0 auto;
