@@ -4,7 +4,12 @@ import { HeroProps } from "./types";
 import Navigation from "../Navigation/Navigation";
 import SocialBar from "../SocialBar/SocialBar";
 
-const Hero: React.FC<HeroProps> = ({ name, title, description }) => {
+export default function Hero({
+  name,
+  title,
+  description,
+  navigationItems,
+}: HeroProps) {
   return (
     <HeroContainer>
       <div>
@@ -12,10 +17,8 @@ const Hero: React.FC<HeroProps> = ({ name, title, description }) => {
         <h3>{title}</h3>
         <p>{description}</p>
       </div>
-      <Navigation />
+      <Navigation items={navigationItems} />
       <SocialBar />
     </HeroContainer>
   );
-};
-
-export default Hero;
+}

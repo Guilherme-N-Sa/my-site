@@ -26,7 +26,7 @@ const defaultLinks: SocialLink[] = [
   },
 ];
 
-const SocialBar: React.FC<SocialBarProps> = ({ links = defaultLinks }) => {
+export default function SocialBar({ links = defaultLinks }: SocialBarProps) {
   return (
     <SocialContainer>
       {links.map((link) => (
@@ -42,6 +42,4 @@ const SocialBar: React.FC<SocialBarProps> = ({ links = defaultLinks }) => {
       ))}
     </SocialContainer>
   );
-};
-
-export default SocialBar;
+}

@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { Wrapper, GeneralInfo, RadialGradient } from './styles';
+import { Wrapper, RadialGradient } from './styles';
 import { LayoutProps } from './types';
 
-const Layout: React.FC<LayoutProps> = ({ children }) => {
+export default function Layout({ children }: LayoutProps) {
   const [mousePosition, setMousePosition] = useState<{ x: number; y: number }>({ x: 0, y: 0 });
 
   useEffect(() => {
@@ -23,11 +23,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
   return (
     <Wrapper>
       <RadialGradient x={mousePosition.x} y={mousePosition.y} />
-      <GeneralInfo>
-        {children}
-      </GeneralInfo>
+      {children}
     </Wrapper>
   );
-};
-
-export default Layout; 
+} 

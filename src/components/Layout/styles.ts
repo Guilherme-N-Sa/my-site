@@ -21,23 +21,6 @@ export const Wrapper = styled.main`
   }
 `;
 
-export const GeneralInfo = styled.div`
-  width: 100%;
-  height: 100%;
-  padding: ${({ theme }) => theme.spacing.xlarge};
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-
-  @media (max-width: 768px) {
-    flex-direction: column;
-    padding: ${({ theme }) => theme.spacing.medium};
-    gap: ${({ theme }) => theme.spacing.medium};
-    overflow: auto;
-    justify-content: start;
-  }
-`;
-
 export const RadialGradient = styled.div<RadialGradientProps>`
   position: fixed;
   top: 0;
