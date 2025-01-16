@@ -1,16 +1,54 @@
-import styled from 'styled-components';
+import styled, { css, keyframes } from "styled-components";
 
-export const DetailedInfoWrapper = styled.div`
+const transformRotateY = css`
+  transform: rotateY(90deg);
+`;
+
+const flipIn = keyframes`
+  from {
+    transform: rotateY(180deg);
+    opacity: 0;
+  }
+  to {
+    transform: rotateY(0deg);
+    opacity: 1;
+  }
+`;
+
+const contentFadeIn = keyframes`
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+`;
+
+export const DetailedInfoContainer = styled.div`
+  perspective: 1000px;
+  width: 100%;
+`;
+
+export const DetailedInfoWrapper = styled.div<{
+  isFlipping: boolean;
+  flippingTime: number;
+}>`
   width: 100%;
   padding: ${({ theme }) => theme.spacing.medium};
   background-color: ${({ theme }) => theme.colors.background.secondary};
   border-radius: 12px;
-  margin-top: ${({ theme }) => theme.spacing.medium};
   color: ${({ theme }) => theme.colors.text.dark};
   min-height: 500px;
   max-height: 75vh;
   overflow-y: auto;
   z-index: 1;
+  transform-style: preserve-3d;
+  transition: transform ${({ flippingTime }) => flippingTime}s;
+  animation: ${flipIn} 1s ease-out;
+
+  ${({ isFlipping }) => isFlipping && transformRotateY}
 
   @media (max-width: 768px) {
     min-height: 600px;
@@ -31,7 +69,7 @@ export const DetailedInfoWrapper = styled.div`
   &::-webkit-scrollbar-thumb {
     background: ${({ theme }) => theme.colors.primary}90;
     border-radius: 3px;
-    
+
     &:hover {
       background: ${({ theme }) => theme.colors.primary};
     }
@@ -44,13 +82,19 @@ export const DetailedInfoWrapper = styled.div`
     font-size: 1.05rem;
     line-height: 1.7;
     padding-bottom: ${({ theme }) => theme.spacing.medium};
+    animation: ${contentFadeIn} 2s ease-in;
 
     @media (max-width: 768px) {
       font-size: 1rem;
-      padding: 0 ${({ theme }) => theme.spacing.small} ${({ theme }) => theme.spacing.large};
+      padding: 0 ${({ theme }) => theme.spacing.small} S${({ theme }) => theme.spacing.large};
     }
 
-    h1, h2, h3, h4, h5, h6 {
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
       margin-top: ${({ theme }) => theme.spacing.medium};
       margin-bottom: ${({ theme }) => theme.spacing.medium};
       color: ${({ theme }) => theme.colors.primary};
@@ -59,20 +103,21 @@ export const DetailedInfoWrapper = styled.div`
 
       &:first-child {
         margin: ${({ theme }) => theme.spacing.small} 0;
-
       }
     }
 
-    h1 { 
+    h1 {
       font-size: 2.5em;
       margin-bottom: ${({ theme }) => theme.spacing.large};
     }
-    h2 { font-size: 2em; }
-    h3 { 
+    h2 {
+      font-size: 2em;
+    }
+    h3 {
       font-size: 1.75em;
       margin-bottom: ${({ theme }) => theme.spacing.large};
     }
-    h4 { 
+    h4 {
       font-size: 1.4em;
       color: ${({ theme }) => theme.colors.primary}dd;
     }
@@ -84,7 +129,8 @@ export const DetailedInfoWrapper = styled.div`
       text-align: justify;
     }
 
-    strong, b {
+    strong,
+    b {
       color: ${({ theme }) => theme.colors.primary};
       font-weight: ${({ theme }) => theme.typography.weights.bold};
     }
@@ -132,8 +178,10 @@ export const DetailedInfoWrapper = styled.div`
       color: ${({ theme }) => theme.colors.text.dark}dd;
     }
 
-    ul, ol {
-      margin: ${({ theme }) => theme.spacing.small} 0 ${({ theme }) => theme.spacing.medium};
+    ul,
+    ol {
+      margin: ${({ theme }) => theme.spacing.small} 0
+        ${({ theme }) => theme.spacing.medium};
       padding-left: ${({ theme }) => theme.spacing.large};
     }
 
@@ -143,7 +191,7 @@ export const DetailedInfoWrapper = styled.div`
       padding-left: ${({ theme }) => theme.spacing.small};
       letter-spacing: -0.01em;
       text-align: justify;
-      
+
       &::marker {
         color: ${({ theme }) => theme.colors.primary}90;
       }
@@ -178,7 +226,8 @@ export const DetailedInfoWrapper = styled.div`
       overflow: hidden;
       box-shadow: 0 0 0 1px ${({ theme }) => theme.colors.primary}20;
 
-      th, td {
+      th,
+      td {
         padding: ${({ theme }) => theme.spacing.small} ${({ theme }) => theme.spacing.medium};
         text-align: left;
         border-bottom: 1px solid ${({ theme }) => theme.colors.primary}20;
@@ -199,4 +248,4 @@ export const DetailedInfoWrapper = styled.div`
       }
     }
   }
-`; 
+`;
