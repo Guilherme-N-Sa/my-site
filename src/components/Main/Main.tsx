@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from "react";
+import  { useState, useMemo } from "react";
 import Hero from "../Hero/Hero";
 import DetailedInfo from "../DetailedInfo/DetailedInfo";
 import { MainContainer } from "./styles";

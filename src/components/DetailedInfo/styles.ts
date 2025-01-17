@@ -46,9 +46,9 @@ export const DetailedInfoWrapper = styled.div<{
   z-index: 1;
   transform-style: preserve-3d;
   transition: transform ${({ flippingTime }) => flippingTime}s;
-  animation: ${flipIn} 1s ease-out;
-
   ${({ isFlipping }) => isFlipping && transformRotateY}
+
+  animation: ${flipIn} 1s ease-out;
 
   @media (max-width: 768px) {
     min-height: 600px;
@@ -57,6 +57,7 @@ export const DetailedInfoWrapper = styled.div<{
     margin-bottom: ${({ theme }) => theme.spacing.xlarge};
   }
 
+  /* Scrollbar Styling */
   &::-webkit-scrollbar {
     width: 6px;
   }

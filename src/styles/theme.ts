@@ -46,6 +46,7 @@ export const theme = {
 
 export type Theme = typeof theme;
 
+// This is a type declaration for styled-components to use the theme
 declare module "styled-components" {
   export interface DefaultTheme extends Theme {}
 }

@@ -1,4 +1,3 @@
-import React from "react";
 import { FaGithub, FaLinkedin, FaMedium, FaInstagram } from "react-icons/fa";
 import { SocialContainer, IconLink } from "./styles";
 import { SocialBarProps, SocialLink } from "./types";
