@@ -1,29 +1,20 @@
 import { FaGithub, FaLinkedin, FaMedium, FaInstagram } from 'react-icons/fa';
 import { SocialContainer, IconLink } from './styles';
 import { SocialBarProps, SocialLink } from './types';
+import socialData from '../../constants/social.json';
 
-const defaultLinks: SocialLink[] = [
-  {
-    icon: FaGithub,
-    url: 'https://github.com/Guilherme-N-Sa',
-    label: 'GitHub Profile',
-  },
-  {
-    icon: FaLinkedin,
-    url: 'https://www.linkedin.com/in/guinssa/',
-    label: 'LinkedIn Profile',
-  },
-  {
-    icon: FaMedium,
-    url: 'https://medium.com/@guilhermeniclewicz',
-    label: 'Medium Blog',
-  },
-  {
-    icon: FaInstagram,
-    url: 'https://www.instagram.com/guilhermeniclewicz',
-    label: 'Instagram Profile',
-  },
-];
+const iconMap = {
+  github: FaGithub,
+  linkedin: FaLinkedin,
+  medium: FaMedium,
+  instagram: FaInstagram,
+};
+
+const defaultLinks: SocialLink[] = socialData.socialLinks.map(link => ({
+  icon: iconMap[link.platform as keyof typeof iconMap],
+  url: link.url,
+  label: link.label,
+}));
 
 export default function SocialBar({ links = defaultLinks }: SocialBarProps) {
   return (

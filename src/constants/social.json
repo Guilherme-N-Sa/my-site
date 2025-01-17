@@ -1,0 +1,24 @@
+{
+  "socialLinks": [
+    {
+      "platform": "github",
+      "url": "https://github.com/Guilherme-N-Sa",
+      "label": "GitHub Profile"
+    },
+    {
+      "platform": "linkedin",
+      "url": "https://www.linkedin.com/in/guinssa/",
+      "label": "LinkedIn Profile"
+    },
+    {
+      "platform": "medium",
+      "url": "https://medium.com/@guilhermeniclewicz",
+      "label": "Medium Blog"
+    },
+    {
+      "platform": "instagram",
+      "url": "https://www.instagram.com/guilhermeniclewicz",
+      "label": "Instagram Profile"
+    }
+  ]
+} 

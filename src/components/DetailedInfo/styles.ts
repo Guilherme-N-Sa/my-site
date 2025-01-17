@@ -53,7 +53,7 @@ export const DetailedInfoWrapper = styled.div<{
   @media (max-width: 768px) {
     min-height: 600px;
     margin-top: ${({ theme }) => theme.spacing.large};
-    padding: ${({ theme }) => theme.spacing.medium} ${({ theme }) => theme.spacing.small};
+    padding: ${({ theme }) => theme.spacing.medium};
     margin-bottom: ${({ theme }) => theme.spacing.xlarge};
   }
 
@@ -80,13 +80,13 @@ export const DetailedInfoWrapper = styled.div<{
   .markdown-content {
     max-width: 900px;
     margin: 0 auto;
-    font-size: 1.05rem;
+    font-size: 0.98rem;
     line-height: 1.7;
     padding-bottom: ${({ theme }) => theme.spacing.medium};
     animation: ${contentFadeIn} 2s ease-in;
 
     @media (max-width: 768px) {
-      font-size: 1rem;
+      font-size: 0.92rem;
       padding: 0 ${({ theme }) => theme.spacing.small} S ${({ theme }) => theme.spacing.large};
     }
 
@@ -102,24 +102,24 @@ export const DetailedInfoWrapper = styled.div<{
       font-weight: ${({ theme }) => theme.typography.weights.bold};
       letter-spacing: -0.02em;
 
-      &:first-child {
-        margin: ${({ theme }) => theme.spacing.small} 0;
+      &:first-of-type:is(h3) {
+        margin: 0 0 ${({ theme }) => theme.spacing.small} 0;
       }
     }
 
     h1 {
-      font-size: 2.5em;
+      font-size: 2.3em;
       margin-bottom: ${({ theme }) => theme.spacing.large};
     }
     h2 {
-      font-size: 2em;
+      font-size: 1.85em;
     }
     h3 {
-      font-size: 1.75em;
+      font-size: 1.6em;
       margin-bottom: ${({ theme }) => theme.spacing.large};
     }
     h4 {
-      font-size: 1.4em;
+      font-size: 1.3em;
       color: ${({ theme }) => theme.colors.primary}dd;
     }
 
@@ -182,7 +182,7 @@ export const DetailedInfoWrapper = styled.div<{
     ul,
     ol {
       margin: ${({ theme }) => theme.spacing.small} 0 ${({ theme }) => theme.spacing.medium};
-      padding-left: ${({ theme }) => theme.spacing.large};
+      padding-left: ${({ theme }) => theme.spacing.medium};
     }
 
     li {
@@ -194,6 +194,10 @@ export const DetailedInfoWrapper = styled.div<{
 
       &::marker {
         color: ${({ theme }) => theme.colors.primary}90;
+      }
+
+      @media (max-width: 768px) {
+        padding-left: 0;
       }
     }
 

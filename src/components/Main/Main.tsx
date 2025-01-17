@@ -10,26 +10,17 @@ type Section = keyof typeof sections;
 export default function Main() {
   const [currentSection, setCurrentSection] = useState<Section>('about');
 
-  const navigationItems = useMemo(
-    () => [
-      {
-        label: 'About',
-        href: '#about',
-        onClick: () => setCurrentSection('about'),
-      },
-      {
-        label: 'Experience',
-        href: '#experience',
-        onClick: () => setCurrentSection('experience'),
-      },
-      {
-        label: 'Projects',
-        href: '#projects',
-        onClick: () => setCurrentSection('projects'),
-      },
-    ],
-    []
-  );
+  const navigationItems = useMemo(() => {
+    const navigationItems = [];
+    for (const key in sections) {
+      navigationItems.push({
+        label: key.charAt(0).toUpperCase() + key.slice(1),
+        href: `#${key}`,
+        onClick: () => setCurrentSection(key as Section),
+      });
+    }
+    return navigationItems;
+  }, []);
 
   return (
     <MainContainer>
