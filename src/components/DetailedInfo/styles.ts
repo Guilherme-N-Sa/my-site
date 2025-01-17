@@ -1,7 +1,7 @@
 import styled, { css, keyframes } from 'styled-components';
 
-const transformRotateY = css`
-  transform: rotateY(90deg);
+const transformRotateX = css`
+  transform: rotateX(-90deg);
 `;
 
 const flipIn = keyframes`
@@ -46,7 +46,7 @@ export const DetailedInfoWrapper = styled.div<{
   z-index: 1;
   transform-style: preserve-3d;
   transition: transform ${({ flippingTime }) => flippingTime}s;
-  ${({ isFlipping }) => isFlipping && transformRotateY}
+  ${({ isFlipping }) => isFlipping && transformRotateX}
 
   animation: ${flipIn} 1s ease-out;
 
