@@ -9,6 +9,7 @@ export const HeroContainer = styled.div`
 
   & > div {
     max-width: 95%;
+    z-index: 1;
   }
 
   * {
