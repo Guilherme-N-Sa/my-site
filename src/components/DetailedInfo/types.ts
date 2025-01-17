@@ -5,4 +5,4 @@ export interface DetailedInfoProps {
 
 export interface DetailedInfoWrapperProps {
   isFlipping: boolean;
-} 
+}

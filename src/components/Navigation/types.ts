@@ -6,4 +6,4 @@ export interface NavItem {
 
 export interface NavigationProps {
   items?: NavItem[];
-} 
+}

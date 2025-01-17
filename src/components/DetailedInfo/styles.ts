@@ -1,4 +1,4 @@
-import styled, { css, keyframes } from "styled-components";
+import styled, { css, keyframes } from 'styled-components';
 
 const transformRotateY = css`
   transform: rotateY(90deg);
@@ -87,7 +87,7 @@ export const DetailedInfoWrapper = styled.div<{
 
     @media (max-width: 768px) {
       font-size: 1rem;
-      padding: 0 ${({ theme }) => theme.spacing.small} S${({ theme }) => theme.spacing.large};
+      padding: 0 ${({ theme }) => theme.spacing.small} S ${({ theme }) => theme.spacing.large};
     }
 
     h1,
@@ -181,8 +181,7 @@ export const DetailedInfoWrapper = styled.div<{
 
     ul,
     ol {
-      margin: ${({ theme }) => theme.spacing.small} 0
-        ${({ theme }) => theme.spacing.medium};
+      margin: ${({ theme }) => theme.spacing.small} 0 ${({ theme }) => theme.spacing.medium};
       padding-left: ${({ theme }) => theme.spacing.large};
     }
 

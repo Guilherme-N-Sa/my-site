@@ -1,15 +1,15 @@
-import { useState, useEffect } from "react";
-import ReactMarkdown from "react-markdown";
-import { DetailedInfoWrapper, DetailedInfoContainer } from "./styles";
-import { DetailedInfoProps } from "./types";
+import { useState, useEffect } from 'react';
+import ReactMarkdown from 'react-markdown';
+import { DetailedInfoWrapper, DetailedInfoContainer } from './styles';
+import { DetailedInfoProps } from './types';
 
 export default function DetailedInfo({
-  content = "Detailed information goes here...",
+  content = 'Detailed information goes here...',
   isMarkdown = false,
 }: DetailedInfoProps) {
   const [isFlipping, setIsFlipping] = useState(false);
   const flippingTime = 0.3;
-  
+
   const [displayContent, setDisplayContent] = useState(content);
 
   useEffect(() => {

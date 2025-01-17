@@ -29,7 +29,7 @@ export const Nav = styled.nav`
   }
 
   a::before {
-    content: "";
+    content: '';
     position: absolute;
     left: 0;
     top: 50%;
@@ -47,4 +47,4 @@ export const Nav = styled.nav`
     color: ${({ theme }) => theme.colors.text.primary};
     padding-left: 45px;
   }
-`; 
+`;

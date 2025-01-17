@@ -1,6 +1,6 @@
-import { useState, useEffect } from "react";
-import { Wrapper, RadialGradient } from "./styles";
-import { LayoutProps } from "./types";
+import { useState, useEffect } from 'react';
+import { Wrapper, RadialGradient } from './styles';
+import { LayoutProps } from './types';
 
 export default function Layout({ children }: LayoutProps) {
   const [mousePosition, setMousePosition] = useState<{ x: number; y: number }>({
@@ -16,10 +16,10 @@ export default function Layout({ children }: LayoutProps) {
       });
     };
 
-    window.addEventListener("mousemove", handleMouseMove);
+    window.addEventListener('mousemove', handleMouseMove);
 
     return () => {
-      window.removeEventListener("mousemove", handleMouseMove);
+      window.removeEventListener('mousemove', handleMouseMove);
     };
   }, []);
 

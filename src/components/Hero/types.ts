@@ -7,4 +7,4 @@ export interface HeroProps {
     href: string;
     onClick?: () => void;
   }>;
-} 
+}

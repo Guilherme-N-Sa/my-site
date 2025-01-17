@@ -15,4 +15,4 @@ export const MainContainer = styled.main`
     overflow: auto;
     justify-content: start;
   }
-`; 
+`;

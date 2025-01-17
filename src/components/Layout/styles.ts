@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import { RadialGradientProps } from "./types";
+import styled from 'styled-components';
+import { RadialGradientProps } from './types';
 
 export const Wrapper = styled.div`
   display: flex;
@@ -28,7 +28,7 @@ export const RadialGradient = styled.div<RadialGradientProps>`
   pointer-events: none;
   width: 100%;
   height: 100%;
-  background: ${(props) =>
+  background: ${props =>
     `radial-gradient(400px at ${props.x}px ${props.y}px, ${props.theme.colors.primary}, transparent 20%)`};
   z-index: 0;
 

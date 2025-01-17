@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const HeroContainer = styled.div`
   display: flex;
@@ -15,7 +15,7 @@ export const HeroContainer = styled.div`
     margin: 0;
     padding: 0;
     font-weight: ${({ theme }) => theme.typography.weights.medium};
-}
+  }
 
   h1 {
     font-size: ${({ theme }) => theme.typography.sizes.xlarge};

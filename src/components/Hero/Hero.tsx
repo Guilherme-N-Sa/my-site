@@ -1,15 +1,10 @@
-import React from "react";
-import { HeroContainer } from "./styles";
-import { HeroProps } from "./types";
-import Navigation from "../Navigation/Navigation";
-import SocialBar from "../SocialBar/SocialBar";
+import React from 'react';
+import { HeroContainer } from './styles';
+import { HeroProps } from './types';
+import Navigation from '../Navigation/Navigation';
+import SocialBar from '../SocialBar/SocialBar';
 
-export default function Hero({
-  name,
-  title,
-  description,
-  navigationItems,
-}: HeroProps) {
+export default function Hero({ name, title, description, navigationItems }: HeroProps) {
   return (
     <HeroContainer>
       <div>

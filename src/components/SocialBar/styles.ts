@@ -31,4 +31,4 @@ export const IconLink = styled.a`
   @media (max-width: 768px) {
     font-size: ${({ theme }) => theme.icons.medium};
   }
-`; 
+`;
