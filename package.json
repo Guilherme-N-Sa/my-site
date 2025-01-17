@@ -2,6 +2,7 @@
   "name": "my-web-react",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://web.niclewicz.click",
   "dependencies": {
     "@types/react": "^19.0.7",
     "@types/react-dom": "^19.0.3",
