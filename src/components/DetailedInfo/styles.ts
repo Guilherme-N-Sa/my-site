@@ -1,7 +1,7 @@
 import styled, { css, keyframes } from 'styled-components';
 
-const transformRotateX = css`
-  transform: rotateX(-90deg);
+const transformRotateY = css`
+  transform: rotateY(-90deg);
 `;
 
 const flipIn = keyframes`
@@ -27,7 +27,7 @@ const contentFadeIn = keyframes`
 `;
 
 export const DetailedInfoContainer = styled.div`
-  perspective: 1000px;
+  perspective: 3000px;
   width: 100%;
 `;
 
@@ -46,7 +46,7 @@ export const DetailedInfoWrapper = styled.div<{
   z-index: 1;
   transform-style: preserve-3d;
   transition: transform ${({ flippingTime }) => flippingTime}s;
-  ${({ isFlipping }) => isFlipping && transformRotateX}
+  ${({ isFlipping }) => isFlipping && transformRotateY}
 
   animation: ${flipIn} 1s ease-out;
 
