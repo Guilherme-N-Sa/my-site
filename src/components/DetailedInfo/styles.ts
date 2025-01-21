@@ -51,6 +51,7 @@ export const DetailedInfoWrapper = styled.div<{
   animation: ${flipIn} 1s ease-out;
 
   @media (max-width: 768px) {
+    max-height: 75vh;
     min-height: 600px;
     margin-top: ${({ theme }) => theme.spacing.large};
     padding: ${({ theme }) => theme.spacing.medium};
