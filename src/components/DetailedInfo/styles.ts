@@ -41,7 +41,7 @@ export const DetailedInfoWrapper = styled.div<{
   border-radius: 12px;
   color: ${({ theme }) => theme.colors.text.dark};
   min-height: 500px;
-  max-height: 75vh;
+  max-height: 100%;
   overflow-y: auto;
   z-index: 1;
   transform-style: preserve-3d;
