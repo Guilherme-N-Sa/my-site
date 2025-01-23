@@ -1,7 +1,7 @@
 import styled, { css, keyframes } from 'styled-components';
 
-const transformRotateX = css`
-  transform: rotateX(-90deg);
+const transformRotateY = css`
+  transform: rotateY(-90deg);
 `;
 
 const flipIn = keyframes`
@@ -27,7 +27,7 @@ const contentFadeIn = keyframes`
 `;
 
 export const DetailedInfoContainer = styled.div`
-  perspective: 1000px;
+  perspective: 3000px;
   width: 100%;
 `;
 
@@ -41,16 +41,17 @@ export const DetailedInfoWrapper = styled.div<{
   border-radius: 12px;
   color: ${({ theme }) => theme.colors.text.dark};
   min-height: 500px;
-  max-height: 75vh;
+  max-height: 100%;
   overflow-y: auto;
   z-index: 1;
   transform-style: preserve-3d;
   transition: transform ${({ flippingTime }) => flippingTime}s;
-  ${({ isFlipping }) => isFlipping && transformRotateX}
+  ${({ isFlipping }) => isFlipping && transformRotateY}
 
   animation: ${flipIn} 1s ease-out;
 
   @media (max-width: 768px) {
+    max-height: 75vh;
     min-height: 600px;
     margin-top: ${({ theme }) => theme.spacing.large};
     padding: ${({ theme }) => theme.spacing.medium};
