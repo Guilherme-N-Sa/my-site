@@ -7,4 +7,5 @@ export interface HeroProps {
     href: string;
     onClick?: () => void;
   }>;
+  setIsChatOpen: (isChatOpen: boolean) => void;
 }
