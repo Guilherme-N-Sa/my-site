@@ -6,4 +6,5 @@ export interface NavItem {
 
 export interface NavigationProps {
   items?: NavItem[];
+  setIsChatOpen: (isChatOpen: boolean) => void;
 }
