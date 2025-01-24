@@ -26,11 +26,6 @@ const contentFadeIn = keyframes`
   }
 `;
 
-export const DetailedInfoContainer = styled.div`
-  perspective: 3000px;
-  width: 100%;
-`;
-
 export const DetailedInfoWrapper = styled.div<{
   isFlipping: boolean;
   flippingTime: number;
@@ -51,11 +46,10 @@ export const DetailedInfoWrapper = styled.div<{
   animation: ${flipIn} 1s ease-out;
 
   @media (max-width: 768px) {
-    max-height: 75vh;
-    min-height: 600px;
-    margin-top: ${({ theme }) => theme.spacing.large};
+    max-width: 500px;
+    margin: 0 auto;
+    max-height: 95vh;
     padding: ${({ theme }) => theme.spacing.medium};
-    margin-bottom: ${({ theme }) => theme.spacing.xlarge};
   }
 
   /* Scrollbar Styling */

@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import ReactMarkdown from 'react-markdown';
-import { DetailedInfoWrapper, DetailedInfoContainer } from './styles';
+import { DetailedInfoWrapper } from './styles';
 import { DetailedInfoProps } from './types';
 
 export default function DetailedInfo({
@@ -25,20 +25,14 @@ export default function DetailedInfo({
   }, [content, displayContent]);
 
   return (
-    <DetailedInfoContainer>
-      <DetailedInfoWrapper
-        className="detailed-info"
-        isFlipping={isFlipping}
-        flippingTime={flippingTime}
-      >
-        {isMarkdown ? (
-          <div className="markdown-content">
-            <ReactMarkdown>{displayContent}</ReactMarkdown>
-          </div>
-        ) : (
-          displayContent
-        )}
-      </DetailedInfoWrapper>
-    </DetailedInfoContainer>
+    <DetailedInfoWrapper isFlipping={isFlipping} flippingTime={flippingTime}>
+      {isMarkdown ? (
+        <div className="markdown-content">
+          <ReactMarkdown>{displayContent}</ReactMarkdown>
+        </div>
+      ) : (
+        displayContent
+      )}
+    </DetailedInfoWrapper>
   );
 }
