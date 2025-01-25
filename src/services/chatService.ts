@@ -56,3 +56,58 @@ export async function sendMessage(params: SendMessageRequest): Promise<SendMessa
     throw error;
   }
 }
+
+/**
+ * Handles the complete message operation including sending and thread management
+ * @param message - The message to be sent
+ * @returns Promise with the formatted message response and updated messages
+ */
+export async function handleMessageOperation(message: string): Promise<{
+  assistantMessage: Message;
+  threadId: string;
+}> {
+  const threadId = localStorage.getItem('threadId') || '';
+
+  const response = await sendMessage({
+    message,
+    thread_id: threadId,
+  });
+
+  localStorage.setItem('threadId', response.thread.thread_id);
+
+  return {
+    assistantMessage: {
+      role: 'assistant',
+      content: response.message,
+    },
+    threadId: response.thread.thread_id,
+  };
+}
+
+/**
+ * Initializes or retrieves the chat history
+ * @param initialMessages - Default messages to show when there's no history
+ * @returns Promise with the chat history or initial messages
+ */
+export async function initializeChatHistory(initialMessages: Message[]): Promise<Message[]> {
+  const threadId = localStorage.getItem('threadId');
+
+  if (!threadId) {
+    return initialMessages;
+  }
+
+  try {
+    const messages = await getChatHistory(threadId);
+
+    if (messages.length === 0) {
+      localStorage.removeItem('threadId');
+      return initialMessages;
+    }
+
+    return messages;
+  } catch (error) {
+    console.error('Failed to fetch chat history:', error);
+    localStorage.removeItem('threadId');
+    return initialMessages;
+  }
+}
