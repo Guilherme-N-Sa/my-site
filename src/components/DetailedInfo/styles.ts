@@ -38,7 +38,7 @@ export const DetailedInfoWrapper = styled.div<DetailedInfoWrapperProps>`
   overflow-y: auto;
   z-index: 1;
   transform-style: preserve-3d;
-  transform: ${({ $isFlipping }) => ($isFlipping ? 'rotateX(90deg)' : 'rotateX(0)')};
+  transform: ${({ $isFlipping }) => ($isFlipping ? 'rotateY(90deg)' : 'rotateY(0)')};
   transition: transform ${({ $flippingTime }) => $flippingTime}s ease-in-out;
 
   animation: ${flipIn} 1s ease-out;
