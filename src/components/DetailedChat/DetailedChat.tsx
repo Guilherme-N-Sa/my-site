@@ -3,7 +3,7 @@ import { DetailedChatWrapper } from './styles';
 import { Message } from './types';
 import MessagesContainer from './MessagesContainer/MessagesContainer';
 import ChatInputContainer from './ChatInputContainer/ChatInputContainer';
-import { getChatHistory, sendMessage } from '../../services/chatService';
+import { handleMessageOperation, initializeChatHistory } from '../../services/chatService';
 
 const INITIAL_MESSAGES: Message[] = [
   {
@@ -25,30 +25,28 @@ export default function DetailedChat() {
     setIsWaitingResponse(true);
     setMessages(prev => [...prev, { role: 'user', content: message } as Message]);
 
-    const response = await sendMessage({
-      message,
-      thread_id: localStorage.getItem('threadId') || '',
-    });
-    // improve this response.response and add a loading state and put this logic in a service
-    setMessages(prev => [...prev, { role: 'assistant', content: response.response } as Message]);
-    localStorage.setItem('threadId', response.thread.thread_id);
-    setIsWaitingResponse(false);
+    try {
+      const { assistantMessage } = await handleMessageOperation(message);
+      setMessages(prev => [...prev, assistantMessage]);
+    } catch (error) {
+      console.error('Error sending message:', error);
+    } finally {
+      setIsWaitingResponse(false);
+    }
   };
 
   useEffect(() => {
-    async function getThreadHistory() {
-      const threadId = localStorage.getItem('threadId');
-      if (threadId) {
-        const messages = await getChatHistory(threadId);
-        if (messages.length > 0) {
-          setMessages(messages);
-          return;
-        }
-        localStorage.removeItem('threadId');
+    async function initializeChat() {
+      try {
+        const initializedMessages = await initializeChatHistory(INITIAL_MESSAGES);
+        setMessages(initializedMessages);
+      } catch (error) {
+        console.error('Failed to initialize chat:', error);
+        setMessages(INITIAL_MESSAGES);
       }
-      setMessages(INITIAL_MESSAGES);
     }
-    getThreadHistory();
+
+    initializeChat();
   }, []);
 
   return (

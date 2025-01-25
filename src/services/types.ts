@@ -18,7 +18,7 @@ export interface SendMessageRequest {
 
 export interface SendMessageResponse {
   thread: Thread;
-  response: string;
+  message: string;
 }
 
 export type GetThreadHistoryResponse = Message[];
