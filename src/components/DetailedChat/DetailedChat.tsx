@@ -1,9 +1,10 @@
-import { useRef, useState, useEffect } from 'react';
-import { DetailedChatWrapper, InputContainer, ChatInput, SendButton } from './styles';
+import { useEffect, useState } from 'react';
+import { DetailedChatWrapper } from './styles';
 import { Message } from './types';
 import MessagesContainer from './MessagesContainer/MessagesContainer';
+import ChatInputContainer from './ChatInputContainer/ChatInputContainer';
+import { getChatHistory, sendMessage } from '../../services/chatService';
 
-// Mocked initial messages
 const INITIAL_MESSAGES: Message[] = [
   {
     role: 'assistant',
@@ -17,96 +18,42 @@ const INITIAL_MESSAGES: Message[] = [
 ];
 
 export default function DetailedChat() {
-  const [messages, setMessages] = useState<Message[]>(INITIAL_MESSAGES);
+  const [messages, setMessages] = useState<Message[]>([]);
   const [isWaitingResponse, setIsWaitingResponse] = useState(false);
-  const inputRef = useRef<HTMLTextAreaElement>(null);
-  const messagesContainerRef = useRef<HTMLDivElement>(null);
 
-  const scrollToBottom = () => {
-    const container = messagesContainerRef.current;
-    if (!container) return;
-
-    const isOverflowing = container.scrollHeight > container.clientHeight;
-    if (isOverflowing) {
-      container.scrollTo({
-        top: container.scrollHeight,
-        behavior: 'smooth',
-      });
-    }
-  };
-
-  // Auto-resize textarea
-  useEffect(() => {
-    const textarea = inputRef.current;
-    if (!textarea) return;
-
-    const adjustHeight = () => {
-      textarea.style.height = 'auto';
-      textarea.style.height = `${Math.min(textarea.scrollHeight, 120)}px`;
-    };
-
-    textarea.addEventListener('input', adjustHeight);
-    return () => textarea.removeEventListener('input', adjustHeight);
-  }, []);
-
-  // Send message
-  const handleSendMessage = () => {
-    const message = inputRef.current?.value.trim();
-    if (!message || isWaitingResponse) return;
-
+  const handleSendMessage = async (message: string) => {
     setIsWaitingResponse(true);
-
     setMessages(prev => [...prev, { role: 'user', content: message } as Message]);
 
-    // Clear input and reset height
-    if (inputRef.current) {
-      inputRef.current.value = '';
-      inputRef.current.style.height = 'auto';
-    }
-
-    // Mock assistant response (you'll replace this with actual API call)
-    setTimeout(() => {
-      setMessages(prev => [
-        ...prev,
-        {
-          role: 'assistant',
-          content: `I received your message: "${message}". This is a mocked response.`,
-        },
-      ]);
-      setIsWaitingResponse(false);
-    }, 1000);
+    const response = await sendMessage({
+      message,
+      thread_id: localStorage.getItem('threadId') || '',
+    });
+    setMessages(prev => [...prev, { role: 'assistant', content: response.response } as Message]);
+    localStorage.setItem('threadId', response.thread.thread_id);
+    setIsWaitingResponse(false);
   };
 
   useEffect(() => {
-    scrollToBottom();
-  }, [messages]);
-
-  const handleKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
-    if (e.key === 'Enter' && !e.shiftKey && !isWaitingResponse) {
-      e.preventDefault();
-      handleSendMessage();
+    async function getThreadHistory() {
+      const threadId = localStorage.getItem('threadId');
+      if (threadId) {
+        const messages = await getChatHistory(threadId);
+        if (messages.length > 0) {
+          setMessages(messages);
+          return;
+        }
+        localStorage.removeItem('threadId');
+      }
+      setMessages(INITIAL_MESSAGES);
     }
-  };
+    getThreadHistory();
+  }, []);
 
   return (
     <DetailedChatWrapper>
-      <MessagesContainer
-        messages={messages}
-        isWaitingResponse={isWaitingResponse}
-        containerRef={messagesContainerRef}
-      />
-      <InputContainer>
-        <ChatInput
-          ref={inputRef}
-          onKeyDown={handleKeyDown}
-          placeholder="Type your question..."
-          rows={1}
-          disabled={isWaitingResponse}
-        />
-        <SendButton onClick={handleSendMessage} disabled={isWaitingResponse}>
-          Send
-        </SendButton>
-      </InputContainer>
+      <MessagesContainer messages={messages} isWaitingResponse={isWaitingResponse} />
+      <ChatInputContainer isWaitingResponse={isWaitingResponse} onSendMessage={handleSendMessage} />
     </DetailedChatWrapper>
   );
 }
