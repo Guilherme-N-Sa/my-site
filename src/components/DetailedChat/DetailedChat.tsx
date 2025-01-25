@@ -29,6 +29,7 @@ export default function DetailedChat() {
       message,
       thread_id: localStorage.getItem('threadId') || '',
     });
+    // improve this response.response and add a loading state and put this logic in a service
     setMessages(prev => [...prev, { role: 'assistant', content: response.response } as Message]);
     localStorage.setItem('threadId', response.thread.thread_id);
     setIsWaitingResponse(false);
