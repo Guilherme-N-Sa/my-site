@@ -25,7 +25,7 @@ export default function DetailedInfo({
   }, [content, displayContent]);
 
   return (
-    <DetailedInfoWrapper isFlipping={isFlipping} flippingTime={flippingTime}>
+    <DetailedInfoWrapper $isFlipping={isFlipping} $flippingTime={flippingTime}>
       {isMarkdown ? (
         <div className="markdown-content">
           <ReactMarkdown>{displayContent}</ReactMarkdown>

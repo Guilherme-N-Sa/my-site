@@ -1,8 +1,4 @@
-import styled, { css, keyframes } from 'styled-components';
-
-const transformRotateY = css`
-  transform: rotateY(-90deg);
-`;
+import styled, { keyframes } from 'styled-components';
 
 const flipIn = keyframes`
   from {
@@ -26,10 +22,12 @@ const contentFadeIn = keyframes`
   }
 `;
 
-export const DetailedInfoWrapper = styled.div<{
-  isFlipping: boolean;
-  flippingTime: number;
-}>`
+interface DetailedInfoWrapperProps {
+  $isFlipping: boolean;
+  $flippingTime: number;
+}
+
+export const DetailedInfoWrapper = styled.div<DetailedInfoWrapperProps>`
   width: 100%;
   padding: ${({ theme }) => theme.spacing.medium};
   background-color: ${({ theme }) => theme.colors.background.secondary};
@@ -40,8 +38,8 @@ export const DetailedInfoWrapper = styled.div<{
   overflow-y: auto;
   z-index: 1;
   transform-style: preserve-3d;
-  transition: transform ${({ flippingTime }) => flippingTime}s;
-  ${({ isFlipping }) => isFlipping && transformRotateY}
+  transform: ${({ $isFlipping }) => ($isFlipping ? 'rotateX(90deg)' : 'rotateX(0)')};
+  transition: transform ${({ $flippingTime }) => $flippingTime}s ease-in-out;
 
   animation: ${flipIn} 1s ease-out;
 
