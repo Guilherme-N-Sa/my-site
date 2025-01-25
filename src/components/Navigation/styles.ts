@@ -49,14 +49,3 @@ export const Nav = styled.nav`
     padding-left: 45px;
   }
 `;
-
-export const AiTag = styled.p`
-  font-size: ${({ theme }) => theme.typography.sizes.xsmall} !important;
-  font-weight: ${({ theme }) => theme.typography.weights.bold};
-  color: ${({ theme }) => theme.colors.text.dark} !important;
-  margin-left: ${({ theme }) => theme.spacing.xsmall};
-  background-color: ${({ theme }) => theme.colors.background.secondary};
-  padding: 0 7px;
-  border-radius: 10px;
-  transform: translateY(-5px);
-`;
