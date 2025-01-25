@@ -37,7 +37,7 @@ jobs:
       - name: Build application
         run: npm run build
         env:
-          REACT_APP_API_BASE_URL: ${{ env.REACT_APP_API_BASE_URL }}
+          REACT_APP_API_BASE_URL: ${{ vars.REACT_APP_API_BASE_URL }}
           CI: true
 
       - name: Configure AWS credentials
