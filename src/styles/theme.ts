@@ -51,8 +51,3 @@ export const theme = {
 } as const;
 
 export type Theme = typeof theme;
-
-// This is a type declaration for styled-components to use the theme
-declare module 'styled-components' {
-  export type DefaultTheme = Theme;
-}
