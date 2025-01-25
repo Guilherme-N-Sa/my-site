@@ -17,10 +17,12 @@ export async function getChatHistory(threadId: string): Promise<GetThreadHistory
 
     const data = await response.json();
 
-    const dataFormatted = data.map((message: Message) => ({
-      role: message.role,
-      content: message.content,
-    }));
+    const dataFormatted = data
+      .map((message: Message) => ({
+        role: message.role,
+        content: message.content,
+      }))
+      .reverse();
 
     return dataFormatted;
   } catch (error) {
