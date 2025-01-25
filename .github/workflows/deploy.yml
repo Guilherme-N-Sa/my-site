@@ -14,7 +14,7 @@ env:
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
-    
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -37,6 +37,7 @@ jobs:
       - name: Build application
         run: npm run build
         env:
+          REACT_APP_API_BASE_URL: ${{ env.REACT_APP_API_BASE_URL }}
           CI: true
 
       - name: Configure AWS credentials
@@ -53,4 +54,4 @@ jobs:
       - name: Invalidate CloudFront
         if: vars.CLOUDFRONT_DISTRIBUTION_ID != ''
         run: |
-          aws cloudfront create-invalidation --distribution-id ${{ vars.CLOUDFRONT_DISTRIBUTION_ID }} --paths "/*" 
+          aws cloudfront create-invalidation --distribution-id ${{ vars.CLOUDFRONT_DISTRIBUTION_ID }} --paths "/*"
